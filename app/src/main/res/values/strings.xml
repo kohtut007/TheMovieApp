@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">TheMovieApp</string>
+    <string name="lbl_search">Search</string>
+    <string name="lbl_discover">Discover</string>
+    <string name="lbl_best_popular_films_and_serials">Best Popular Films And Serials</string>
+    <string name="lbl_see_more"><u>See More</u></string>
+    <string name="lbl_check_movie_show_times">Check Movie\nShowtimes</string>
+    <string name="lbl_more_showcases"><u>More Showcases</u></string>
+    <string name="lbl_showcases">ShowCases</string>
+    <string name="lbl_best_actors">Best Actors</string>
+    <string name="lbl_more_actors"><u>More Actors</u></string>
+</resources>
