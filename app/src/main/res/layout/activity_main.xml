@@ -79,7 +79,7 @@
                 android:textStyle="bold" />
 
             <include
-                android:id="@+id/vpMovieBestPopularMovieList"
+                android:id="@+id/vpBestPopularMovieList"
                 layout="@layout/view_pod_movie_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -90,7 +90,7 @@
                 android:id="@+id/rlCheckMovieShowTimes"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/height_check_movie_show_time"
-                android:layout_below="@id/vpMovieBestPopularMovieList"
+                android:layout_below="@id/vpBestPopularMovieList"
                 android:layout_marginStart="@dimen/margin_medium_2"
                 android:layout_marginTop="@dimen/margin_medium_3"
                 android:layout_marginEnd="@dimen/margin_medium_2"

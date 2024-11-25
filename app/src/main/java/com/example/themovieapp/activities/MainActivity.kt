@@ -10,17 +10,20 @@ import com.example.themovieapp.adapters.BannerAdapter
 import com.example.themovieapp.adapters.ShowcaseAdapter
 import com.example.themovieapp.databinding.ActivityMainBinding
 import com.example.themovieapp.delegate.BannerViewHolderDelegate
+import com.example.themovieapp.delegate.MovieViewHolderDelegate
 import com.example.themovieapp.delegate.ShowcaseViewHolderDelegate
 import com.example.themovieapp.dummy.dummyGenreList
 import com.example.themovieapp.viewpods.MovieListViewPod
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
 
-class MainActivity : AppCompatActivity(), BannerViewHolderDelegate, ShowcaseViewHolderDelegate {
+class MainActivity : AppCompatActivity(), BannerViewHolderDelegate, ShowcaseViewHolderDelegate, MovieViewHolderDelegate {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var mBannerAdapter: BannerAdapter
     private lateinit var mShowcaseAdapter: ShowcaseAdapter
+    private lateinit var mBestPopularMovieListViewPod: MovieListViewPod
+    private lateinit var mMoviesByGenreViewPod: MovieListViewPod
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,11 +31,20 @@ class MainActivity : AppCompatActivity(), BannerViewHolderDelegate, ShowcaseView
         setContentView(binding.root)
 
         setUpToolbar()
+        setUpViewPods()
         setUpBannerViewPager()
         setUpGenreTabLayout()
         setUpListener()
         setUpShowcaseRecyclerView()
-//        vpBestPopularMovieList as MovieListViewPod
+    }
+
+    private fun setUpViewPods() {
+        // Access the root view of ViewPodMovieListBinding and cast to MovieListViewPod if it's the custom view you need
+        mBestPopularMovieListViewPod = binding.vpBestPopularMovieList.root as MovieListViewPod
+        mBestPopularMovieListViewPod.setUpMovieListViewPod(this)
+
+        mMoviesByGenreViewPod = binding.vpMoviesByGenre.root as MovieListViewPod
+        mMoviesByGenreViewPod.setUpMovieListViewPod(this)
     }
 
     private fun setUpShowcaseRecyclerView() {
@@ -86,11 +98,16 @@ class MainActivity : AppCompatActivity(), BannerViewHolderDelegate, ShowcaseView
     }
 
     override fun onTapMovieFromBanner() {
-        Snackbar.make(window.decorView, "Tapped Movie From Banner", Snackbar.LENGTH_LONG).show()
+        startActivity(MovieDetailsActivity.newIntent(this))
     }
 
     override fun onTapMovieFromShowcase() {
-        Snackbar.make(window.decorView, "Tapped Movie From Showcase", Snackbar.LENGTH_LONG).show()
+        startActivity(MovieDetailsActivity.newIntent(this))
+
+    }
+
+    override fun onTapMovie() {
+        startActivity(MovieDetailsActivity.newIntent(this))
 
     }
 }
